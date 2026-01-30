@@ -1,70 +1,95 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-Alumnos
+            {{ __('messages.students') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-@if(session('success'))
-    <div class="mb-4 text-green-600">
-        {{ session('success') }}
+            {{-- BOTONES SUPERIORES --}}
+            <div class="flex justify-between items-center mb-6">
+                {{-- VOLVER --}}
+                <a href="{{ route('dashboard') }}"
+                   class="inline-block bg-gray-100 text-gray-700 px-4 py-2 rounded hover:bg-gray-200">
+                    ← Volver al dashboard
+                </a>
+
+                {{-- CREAR --}}
+                <a href="{{ route('students.create') }}"
+                   class="inline-block bg-gray-100 text-gray-700 px-4 py-2 rounded hover:bg-gray-200">
+                    Crear alumno
+                </a>
+            </div>
+
+            {{-- MENSAJE --}}
+            @if(session('success'))
+                <div class="mb-4 text-green-600 text-center">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            <div class="bg-white p-6 shadow rounded">
+
+                <table class="w-full border-collapse">
+                    <thead>
+                    <tr class="border-b">
+                        <th class="py-2 text-center">Nombre</th>
+                        <th class="py-2 text-center">Email</th>
+                        <th class="py-2 text-center">Curso</th>
+                        <th class="py-2 text-center">Acciones</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach($students as $student)
+                        <tr class="border-b h-14">
+                            <td class="py-3 text-center">
+                                {{ $student->name }}
+                            </td>
+                            <td class="py-3 text-center">
+                                {{ $student->email }}
+                            </td>
+                            <td class="py-3 text-center">
+                                {{ $student->course }}
+                            </td>
+
+                            {{-- ACCIONES --}}
+                            <td class="py-3 text-center">
+                                <div class="inline-flex items-center gap-3">
+                                    <a href="{{ route('students.edit', $student) }}"
+                                       class="text-blue-600 hover:underline">
+                                        Editar
+                                    </a>
+
+                                    <form action="{{ route('students.destroy', $student) }}"
+                                          method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button
+                                            onclick="return confirm('¿Eliminar alumno?')"
+                                            class="text-red-600 hover:underline">
+                                            Eliminar
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+
+                {{-- PAGINACIÓN --}}
+                <div class="mt-6">
+                    {{ $students->links() }}
+                </div>
+
+            </div>
+
+        </div>
     </div>
-@endif
-
-<a href="{{ route('students.create') }}"
-   class="mb-4 inline-block text-blue-600 hover:underline">
-    Crear alumno
-</a>
-
-<div class="bg-white p-6 shadow rounded">
-    <table class="w-full">
-        <thead>
-        <tr class="border-b">
-            <th class="text-left">Nombre</th>
-            <th class="text-left">Email</th>
-            <th class="text-left">Curso</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($students as $student)
-            <tr class="border-b">
-                <td>{{ $student->name }}</td>
-                <td>{{ $student->email }}</td>
-                <td>{{ $student->course }}</td>
-                <td class="space-x-2">
-                    <a href="{{ route('students.edit', $student) }}" class="text-blue-600">Editar</a>
-
-                    <form id="delete-form-{{ $student->id }}"
-                          action="{{ route('students.destroy', $student) }}"
-                          method="POST" class="inline">
-                        @csrf
-                        @method('DELETE')
-
-                        <button type="button"
-                                onclick="confirmDelete({{ $student->id }})"
-                                class="text-red-600">
-                            Eliminar
-                        </button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
-
-    <div class="mt-4">
-        {{ $students->links() }}
-    </div>
-</div>
-
-</div>
-</div>
 </x-app-layout>
-
 
 <script>
     function confirmDelete(studentId) {
@@ -84,4 +109,3 @@ Alumnos
         });
     }
 </script>
-

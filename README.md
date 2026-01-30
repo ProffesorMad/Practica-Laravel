@@ -1,59 +1,144 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## 📌 Descripción del proyecto ##
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este proyecto es una aplicación web desarrollada con Laravel que permite la gestión de proyectos y alumnos, incorporando autenticación de usuarios, control de permisos, traducciones a varios idiomas y una interfaz clara y funcional.
 
-## About Laravel
+La aplicación diferencia entre un usuario administrador y usuarios normales, mostrando distintas opciones según el tipo de usuario.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Instalación y puesta en marcha ##
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### **Clonar el repositorio** ###
+git clone https://github.com/ProffesorMad/Practica-Laravel.git
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### **Acceder al proyecto
+cd Practica-Laravel
 
-## Learning Laravel
+### **Instalar dependencias
+composer install
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### **Configurar el archivo .env
+Duplicar el archivo .env.example y renombrarlo a .env.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Configurar la base de datos según el entorno local:
 
-## Laravel Sponsors
+*DB_DATABASE=practicalaravel
+DB_USERNAME=root
+DB_PASSWORD=*
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### **Generar la clave de la aplicación
+php artisan key:generate
 
-### Premium Partners
+### **Ejecutar migraciones y seeders
+php artisan migrate --seed
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### **Iniciar el servidor
+php artisan serve
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+La aplicación estará disponible en:
+*http://127.0.0.1:8000*
 
-## Code of Conduct
+## 👤 Usuarios y roles##
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### **🔑 Usuario administrador ** ###
 
-## Security Vulnerabilities
+El administrador se identifica por el correo:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+_admin@gmail.com_
 
-## License
+Contraseña:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+_admin1209_
+
+El administrador puede:
+-Crear alumnos
+-Editar alumnos
+-Eliminar alumnos
+-Ver todas las secciones
+
+## 👥 Usuario normal
+
+Cualquier usuario registrado con otro correo.
+
+Puede:
+-Ver alumnos
+-Ver proyectos
+
+No puede:
+-Crear alumnos
+-Editar alumnos
+-Eliminar alumnos
+
+Las opciones no autorizadas no se muestran en la interfaz.
+
+## 🔐 Autenticación
+
+La aplicación utiliza Laravel Breeze para:
+-Registro de usuarios
+-Inicio de sesión
+-Cierre de sesión
+
+## 🌍 Sistema de idiomas
+
+La aplicación es multilenguaje y soporta:
+-🇪🇸 Español
+-🇬🇧 Inglés
+-🇫🇷 Francés
+
+El idioma puede cambiarse mediante un desplegable con banderas, y el idioma seleccionado:
+-Se guarda en sesión
+-Se mantiene al navegar por la aplicación
+-Traduce todos los textos de la aplicación
+
+## 🧑‍🎓 Gestión de alumnos (CRUD)
+
+Funcionalidades:
+-Listado de alumnos
+-Crear alumno (solo admin)
+-Editar alumno (solo admin)
+-Eliminar alumno (solo admin)
+
+La tabla:
+-Está centrada
+-Muestra acciones solo al administrador
+-Tiene botones separados y bien organizados
+
+## 📁 Gestión de proyectos
+
+-Los proyectos se cargan mediante seeders
+-Se muestran en una vista dedicada
+-Cada proyecto tiene:
+  -Nombre
+  -Descripción
+-Incluye botón para volver al dashboard
+
+## 🧭 Dashboard
+
+El panel principal muestra:
+-Acceso a Proyectos
+-Acceso a Alumnos
+
+Incluye botones diferenciados y diseño sencillo y claro.
+
+## 🎨 Diseño y usabilidad
+
+-Botones claramente diferenciados
+-Navegación intuitiva
+-Interfaz responsive
+
+## 📂 Estructura del proyecto
+
+-app/Models → Modelos
+
+-app/Http/Controllers → Controladores
+
+-resources/views → Vistas Blade
+
+-resources/lang → Traducciones
+
+-database/seeders → Seeders
+
+## ✍️ Autor
+
+ProffesorMad
+Proyecto desarrollado como práctica de Laravel.
+

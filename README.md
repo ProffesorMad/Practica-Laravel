@@ -6,16 +6,16 @@ La aplicación diferencia entre un usuario administrador y usuarios normales, mo
 
 ## 🚀 Instalación y puesta en marcha ##
 
-### ** Clonar el repositorio 
+### Clonar el repositorio 
 git clone https://github.com/ProffesorMad/Practica-Laravel.git
 
-### ** Acceder al proyecto
+### Acceder al proyecto
 cd Practica-Laravel
 
-### ** Instalar dependencias
+### Instalar dependencias
 composer install
 
-### ** Configurar el archivo .env
+### Configurar el archivo .env
 Duplicar el archivo .env.example y renombrarlo a .env.
 
 Configurar la base de datos según el entorno local:
@@ -26,22 +26,22 @@ Configurar la base de datos según el entorno local:
 
 *DB_PASSWORD=*
 
-### ** Generar la clave de la aplicación
+### Generar la clave de la aplicación
 php artisan key:generate
 
-### ** Ejecutar migraciones y seeders
+### Ejecutar migraciones y seeders
 php artisan migrate --seed
 
-### ** Iniciar el servidor
+### Iniciar el servidor
 php artisan serve
 
 
 La aplicación estará disponible en:
 *http://127.0.0.1:8000*
 
-## 👤 Usuarios y roles##
+## 👤 Usuarios y roles ##
 
-### ** 🔑 Usuario administrador ** ###
+### 🔑 Usuario administrador 
 
 El administrador se identifica por el correo:
 

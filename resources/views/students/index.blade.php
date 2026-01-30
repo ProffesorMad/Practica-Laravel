@@ -38,11 +38,17 @@ Alumnos
                 <td class="space-x-2">
                     <a href="{{ route('students.edit', $student) }}" class="text-blue-600">Editar</a>
 
-                    <form action="{{ route('students.destroy', $student) }}"
+                    <form id="delete-form-{{ $student->id }}"
+                          action="{{ route('students.destroy', $student) }}"
                           method="POST" class="inline">
                         @csrf
                         @method('DELETE')
-                        <button class="text-red-600">Eliminar</button>
+
+                        <button type="button"
+                                onclick="confirmDelete({{ $student->id }})"
+                                class="text-red-600">
+                            Eliminar
+                        </button>
                     </form>
                 </td>
             </tr>
@@ -58,3 +64,24 @@ Alumnos
 </div>
 </div>
 </x-app-layout>
+
+
+<script>
+    function confirmDelete(studentId) {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: 'Este alumno será eliminado definitivamente',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + studentId).submit();
+            }
+        });
+    }
+</script>
+

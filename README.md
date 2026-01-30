@@ -21,7 +21,9 @@ Duplicar el archivo .env.example y renombrarlo a .env.
 Configurar la base de datos según el entorno local:
 
 *DB_DATABASE=practicalaravel
+
 DB_USERNAME=root
+
 DB_PASSWORD=*
 
 ### **Generar la clave de la aplicación
@@ -50,9 +52,13 @@ Contraseña:
 _admin1209_
 
 El administrador puede:
+
 -Crear alumnos
+
 -Editar alumnos
+
 -Eliminar alumnos
+
 -Ver todas las secciones
 
 ## 👥 Usuario normal
@@ -60,12 +66,17 @@ El administrador puede:
 Cualquier usuario registrado con otro correo.
 
 Puede:
+
 -Ver alumnos
+
 -Ver proyectos
 
 No puede:
+
 -Crear alumnos
+
 -Editar alumnos
+
 -Eliminar alumnos
 
 Las opciones no autorizadas no se muestran en la interfaz.
@@ -73,48 +84,71 @@ Las opciones no autorizadas no se muestran en la interfaz.
 ## 🔐 Autenticación
 
 La aplicación utiliza Laravel Breeze para:
+
 -Registro de usuarios
+
 -Inicio de sesión
+
 -Cierre de sesión
 
 ## 🌍 Sistema de idiomas
 
 La aplicación es multilenguaje y soporta:
+
 -🇪🇸 Español
+
 -🇬🇧 Inglés
+
 -🇫🇷 Francés
 
 El idioma puede cambiarse mediante un desplegable con banderas, y el idioma seleccionado:
+
 -Se guarda en sesión
+
 -Se mantiene al navegar por la aplicación
+
 -Traduce todos los textos de la aplicación
 
 ## 🧑‍🎓 Gestión de alumnos (CRUD)
 
 Funcionalidades:
+
 -Listado de alumnos
+
 -Crear alumno (solo admin)
+
 -Editar alumno (solo admin)
+
 -Eliminar alumno (solo admin)
 
 La tabla:
+
 -Está centrada
+
 -Muestra acciones solo al administrador
+
 -Tiene botones separados y bien organizados
 
 ## 📁 Gestión de proyectos
 
 -Los proyectos se cargan mediante seeders
+
 -Se muestran en una vista dedicada
+
 -Cada proyecto tiene:
+
   -Nombre
+  
   -Descripción
+  
 -Incluye botón para volver al dashboard
 
 ## 🧭 Dashboard
 
 El panel principal muestra:
+
 -Acceso a Proyectos
+
 -Acceso a Alumnos
 
 Incluye botones diferenciados y diseño sencillo y claro.
@@ -122,7 +156,9 @@ Incluye botones diferenciados y diseño sencillo y claro.
 ## 🎨 Diseño y usabilidad
 
 -Botones claramente diferenciados
+
 -Navegación intuitiva
+
 -Interfaz responsive
 
 ## 📂 Estructura del proyecto
@@ -140,5 +176,6 @@ Incluye botones diferenciados y diseño sencillo y claro.
 ## ✍️ Autor
 
 ProffesorMad
+
 Proyecto desarrollado como práctica de Laravel.
 

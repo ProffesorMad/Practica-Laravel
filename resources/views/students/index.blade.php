@@ -56,8 +56,8 @@
                             </td>
 
                             {{-- ACCIONES --}}
-                            <td class="py-3 text-center">
-                                <div class="inline-flex items-center gap-3">
+                            <td class="py-4 text-center">
+                                <div class="flex flex-col items-center gap-2">
                                     <a href="{{ route('students.edit', $student) }}"
                                        class="text-blue-600 hover:underline">
                                         Editar

@@ -20,11 +20,11 @@ Duplicar el archivo .env.example y renombrarlo a .env.
 
 Configurar la base de datos según el entorno local:
 
-*DB_DATABASE=practicalaravel
+*DB_DATABASE=practicalaravel*
 
-DB_USERNAME=root
+*DB_USERNAME=root*
 
-DB_PASSWORD=*
+*DB_PASSWORD=*
 
 ### **Generar la clave de la aplicación
 php artisan key:generate

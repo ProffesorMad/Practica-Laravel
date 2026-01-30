@@ -17,10 +17,12 @@
                 </a>
 
                 {{-- CREAR --}}
-                <a href="{{ route('students.create') }}"
-                   class="inline-block bg-gray-100 text-gray-700 px-4 py-2 rounded hover:bg-gray-200">
-                    Crear alumno
-                </a>
+                @if(auth()->user()->email === 'admin@gmail.com')
+                    <a href="{{ route('students.create') }}"
+                       class="inline-block bg-gray-100 text-gray-700 px-4 py-2 rounded hover:bg-gray-200">
+                        Crear alumno
+                    </a>
+                @endif
             </div>
 
             {{-- MENSAJE --}}
@@ -38,43 +40,48 @@
                         <th class="py-2 text-center">Nombre</th>
                         <th class="py-2 text-center">Email</th>
                         <th class="py-2 text-center">Curso</th>
-                        <th class="py-2 text-center">Acciones</th>
+                        @if(auth()->user()->email === 'admin@gmail.com')
+                            <th class="py-2 text-center">Acciones</th>
+                        @endif
                     </tr>
                     </thead>
 
                     <tbody>
                     @foreach($students as $student)
-                        <tr class="border-b h-14">
-                            <td class="py-3 text-center">
+                        <tr class="border-b">
+                            <td class="py-4 text-center">
                                 {{ $student->name }}
                             </td>
-                            <td class="py-3 text-center">
+
+                            <td class="py-4 text-center">
                                 {{ $student->email }}
                             </td>
-                            <td class="py-3 text-center">
+
+                            <td class="py-4 text-center">
                                 {{ $student->course }}
                             </td>
 
-                            {{-- ACCIONES --}}
-                            <td class="py-4 text-center">
-                                <div class="flex flex-col items-center gap-2">
-                                    <a href="{{ route('students.edit', $student) }}"
-                                       class="text-blue-600 hover:underline">
-                                        Editar
-                                    </a>
+                            @if(auth()->user()->email === 'admin@gmail.com')
+                                <td class="py-4 text-center">
+                                    <div class="flex flex-col items-center gap-2">
+                                        <a href="{{ route('students.edit', $student) }}"
+                                           class="text-blue-600 hover:underline">
+                                            Editar
+                                        </a>
 
-                                    <form action="{{ route('students.destroy', $student) }}"
-                                          method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button
-                                            onclick="return confirm('¿Eliminar alumno?')"
-                                            class="text-red-600 hover:underline">
-                                            Eliminar
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
+                                        <form action="{{ route('students.destroy', $student) }}"
+                                              method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button
+                                                onclick="return confirm('¿Eliminar alumno?')"
+                                                class="text-red-600 hover:underline">
+                                                Eliminar
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            @endif
                         </tr>
                     @endforeach
                     </tbody>

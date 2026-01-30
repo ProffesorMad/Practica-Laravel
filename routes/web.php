@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\StudentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,3 +17,6 @@ require __DIR__.'/auth.php';
 Route::get('/projects', [ProjectController::class, 'index'])
     ->middleware('auth')
     ->name('projects.index');
+
+Route::resource('students', StudentController::class)
+    ->middleware('auth');

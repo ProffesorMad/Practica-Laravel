@@ -24,6 +24,12 @@
                 <div class="bg-white p-6 shadow rounded">
                     <h3 class="font-bold mb-2">Alumnos</h3>
                     <p>Gestión completa de alumnos.</p>
+
+                    <a href="{{ route('students.index') }}"
+                       class="text-blue-600 hover:underline">
+                        Ver alumnos
+                    </a>
+
                 </div>
 
             </div>

@@ -13,14 +13,14 @@
                 {{-- VOLVER --}}
                 <a href="{{ route('dashboard') }}"
                    class="inline-block bg-gray-100 text-gray-700 px-4 py-2 rounded hover:bg-gray-200">
-                    ← Volver al dashboard
+                    ← {{ __('messages.back_dashboard') }}
                 </a>
 
                 {{-- CREAR --}}
                 @if(auth()->user()->email === 'admin@gmail.com')
                     <a href="{{ route('students.create') }}"
                        class="inline-block bg-gray-100 text-gray-700 px-4 py-2 rounded hover:bg-gray-200">
-                        Crear alumno
+                        {{ __('messages.create_student') }}
                     </a>
                 @endif
             </div>
@@ -37,11 +37,11 @@
                 <table class="w-full border-collapse">
                     <thead>
                     <tr class="border-b">
-                        <th class="py-2 text-center">Nombre</th>
-                        <th class="py-2 text-center">Email</th>
-                        <th class="py-2 text-center">Curso</th>
+                        <th>{{ __('messages.name') }}</th>
+                        <th>{{ __('messages.email') }}</th>
+                        <th>{{ __('messages.course') }}</th>
                         @if(auth()->user()->email === 'admin@gmail.com')
-                            <th class="py-2 text-center">Acciones</th>
+                            <th>{{ __('messages.actions') }}</th>
                         @endif
                     </tr>
                     </thead>
@@ -66,7 +66,7 @@
                                     <div class="flex flex-col items-center gap-2">
                                         <a href="{{ route('students.edit', $student) }}"
                                            class="text-blue-600 hover:underline">
-                                            Editar
+                                            {{ __('messages.edit') }}
                                         </a>
 
                                         <form action="{{ route('students.destroy', $student) }}"
@@ -76,7 +76,7 @@
                                             <button
                                                 onclick="return confirm('¿Eliminar alumno?')"
                                                 class="text-red-600 hover:underline">
-                                                Eliminar
+                                                {{ __('messages.delete') }}
                                             </button>
                                         </form>
                                     </div>

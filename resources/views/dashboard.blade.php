@@ -17,7 +17,7 @@
                     </h3>
 
                     <p class="text-gray-600 mb-4">
-                        Gestión de proyectos del sistema.
+                        {{ __('messages.view_projects') }}
                     </p>
 
                     <a href="{{ route('projects.index') }}"

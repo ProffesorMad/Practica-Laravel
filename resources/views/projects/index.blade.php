@@ -12,7 +12,7 @@
             <div class="mb-6">
                 <a href="{{ route('dashboard') }}"
                    class="inline-block bg-gray-100 text-gray-700 px-4 py-2 rounded hover:bg-gray-200">
-                    ← Volver al dashboard
+                    ← {{ __('messages.back_dashboard') }}
                 </a>
             </div>
 

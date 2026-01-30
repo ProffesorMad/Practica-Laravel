@@ -36,11 +36,11 @@
         </div>
 
         <h1 class="text-3xl font-bold mb-4">
-            Bienvenido a la aplicación
+            {{ __('messages.welcome') }}
         </h1>
 
         <p class="text-gray-600">
-            Gestión de proyectos y alumnos con Laravel
+            {{ __('messages.welcome_subtitle') }}
         </p>
     </div>
 </div>
